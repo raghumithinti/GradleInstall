@@ -1,0 +1,69 @@
+
+Reference document: 
+https://yallalabs.com/devops/how-to-install-gradle-ubuntu-18-04-ubuntu-16-04/
+
+Prerequisites
+You’ll need to be logged in as a user with sudo privileges in order to install Gradle
+
+1. Install OpenJDK
+– Gradle requires Java JDK or JRE version 7 or above to be installed. Use the below command to install OpenJDK 8.
+
+$ sudo apt update
+$ sudo apt install openjdk-8-jdk
+– To verify that Java was successfully installed, run the following command:
+
+$ java -version
+openjdk version "1.8.0_181"
+OpenJDK Runtime Environment (build 1.8.0_181-8u181-b13-0ubuntu0.18.04.1-b13)
+OpenJDK 64-Bit Server VM (build 25.181-b13, mixed mode)
+2. Download Gradle
+– To download the latest version of Gradle, visit the Gradle releases page. Use the wget command to download Gradle zip file in the /tmp directory:
+
+$ wget https://services.gradle.org/distributions/gradle-6.4.1-bin.zip -P /tmp
+– Once the download is completed, extract the zip file in the /opt/gradle directory:
+
+$ sudo unzip -d /opt/gradle /tmp/gradle-*.zip
+3. Setup environment variables
+– To configure the PATH environment variable to include the Gradle bin directory. create a new file named gradle.sh inside of the /etc/profile.d/ directory as below.
+
+$ sudo vi /etc/profile.d/gradle.sh
+export GRADLE_HOME=/opt/gradle/gradle-6.4.1
+export PATH=${GRADLE_HOME}/bin:${PATH}
+– Load the environment variables using the following command:
+
+$ source /etc/profile.d/gradle.sh
+
+4. Verify the Gradle installation
+– To verify if Gradle is installed properly use the gradle -v command which will display the Gradle version:
+
+$ gradle -v
+Welcome to Gradle 6.4.1!
+
+Here are the highlights of this release:
+ - Java 14 support
+ - Improved error messages for unexpected failures
+
+For more details see https://docs.gradle.org/6.4.1/release-notes.html
+
+
+------------------------------------------------------------
+Gradle 6.4.1
+------------------------------------------------------------
+
+Build time:   2020-03-24 19:52:07 UTC
+Revision:     bacd40b727b0130eeac8855ae3f9fd9a0b207c60
+
+Kotlin:       1.3.70
+Groovy:       2.5.10
+Ant:          Apache Ant(TM) version 1.10.7 compiled on September 1 2019
+JVM:          11.0.6 (Oracle Corporation 11.0.6+10-LTS)
+OS:           Linux 4.18.0-80.11.2.el8_0.x86_64 amd64
+Conclusion
+You have successfully installed Gradle on your Ubuntu 18.04 LTS / Ubuntu 16.04 LTS. You might want to check the following guides:
+
+How to install Apache Maven on Ubuntu 18 / Ubuntu 16
+
+
+We hope this tutorial was enough Helpful. If you need more information, or have any questions, just comment below and we will be glad to assist you!
+
+If you like our content, please consider buying us a co
